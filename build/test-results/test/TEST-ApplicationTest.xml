@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-10T04:51:29" hostname="Kimui-MacBookPro.local" time="0.011">
-  <properties/>
-  <testcase name="test()" classname="ApplicationTest" time="0.011"/>
-  <system-out><![CDATA[Hello TDD World!
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
