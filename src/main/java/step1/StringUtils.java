@@ -20,6 +20,11 @@ public class StringUtils {
     public void setInput(String input) {
         this.input = input;
     }
+    
+    public String subString(int begin, int end){
+        String result = this.input.substring(begin, end);
+        return result;
+    }
 
     public void charAt(int index) throws StringIndexOutOfBoundsException{
         try{

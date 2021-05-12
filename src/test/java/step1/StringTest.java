@@ -23,15 +23,22 @@ public class StringTest {
     @DisplayName("substring 테스트")
     @Test
     void subStringTest(){
+        //given
         String input = "(1,2)";
+
         int begin = input.indexOf("(");
         int end = input.indexOf(")");
-        String result = input.substring(begin+1, end);
+
+        StringUtils stringUtils = StringUtils.getInstance();
+        stringUtils.setInput(input);
+
+        String result = stringUtils.subString(begin+1, end);
 
         StringJoiner expectedString = new StringJoiner(",");
         expectedString.add("1");
         expectedString.add("2");
 
+        //then
         assertThat(expectedString.toString()).isEqualTo(result);
     }
 
