@@ -35,7 +35,7 @@ public class SetTest {
     }
 
     @DisplayName("Set Value 확인 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name="Set에 {0}는 존재합니다.")
     @ValueSource(ints = {1,2,3})
     public void contains(int value){
         assertThat(numbers.contains(value)).isTrue();
@@ -43,7 +43,7 @@ public class SetTest {
     }
 
     @DisplayName("Set에 존재하지않는 value가 있는지 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name="Set에 {index} 의 존재여부 :''{1}''")
     @CsvSource(value = {"3:True","2:True","1:True","4:False","5:False"}, delimiter = ':')
     public void containsAllCheck(int input, boolean expected){
         boolean isContain = numbers.contains(input);
