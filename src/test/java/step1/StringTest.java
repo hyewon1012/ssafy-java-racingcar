@@ -10,7 +10,7 @@ import java.util.StringJoiner;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-    @DisplayName("split테스트")
+    @DisplayName("split 테스트")
     @Test
     void splitTest(){
         String input = "1,2";
@@ -30,9 +30,9 @@ public class StringTest {
         int end = input.indexOf(")");
 
         StringUtils stringUtils = StringUtils.getInstance();
-        stringUtils.setInput(input);
 
-        String result = stringUtils.subString(begin+1, end);
+        //when
+        String result = stringUtils.subString(input, begin+1, end);
 
         StringJoiner expectedString = new StringJoiner(",");
         expectedString.add("1");
@@ -49,17 +49,9 @@ public class StringTest {
         String input = "abc";
         int findIndex = 3;
         StringUtils stringUtils = StringUtils.getInstance();
-        stringUtils.setInput(input);
 
-        //when
-        Throwable thrown = catchThrowable(() -> {
-            stringUtils.charAt(findIndex);
-        });
-
-        //then
-        assertThat(thrown)
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessage("인덱스가 범위를 벗어났습니다.");
-
+        //when and then
+        assertThatThrownBy(() -> {input.charAt(findIndex);})
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
