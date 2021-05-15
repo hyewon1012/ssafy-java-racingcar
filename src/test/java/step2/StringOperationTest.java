@@ -3,6 +3,7 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -16,16 +17,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringOperationTest {
     @DisplayName("덧셈 테스트")
-    @Test
-    void 덧셈(){
-        //given
-        String input = "2 + 3";
+    @ParameterizedTest(name = "{0} 덧셈 결과는 {1} 입니다.")
+    @CsvSource(value = {"2 + 3:5", "6 + 9:15", "0 + 1:1"}, delimiter = ':')
+    void 덧셈(String input, Integer expected){
         //when
         List<String> operand = Arrays.asList(input.split(" "));
-        //then
         StringOperation stringOperation = StringOperation.getInstance();
+
+        //then
         int addResult = stringOperation.add(operand);
-        assertThat(addResult).isEqualTo(5);
+        assertThat(addResult).isEqualTo(expected);
     }
 
     @DisplayName("뺄셈 테스트")
