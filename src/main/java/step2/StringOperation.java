@@ -43,19 +43,19 @@ public final class StringOperation {
         return result;
     }
 
-    public static int add(final int a, final int b) {
+    private final static int add(final int a, final int b) {
         return a+b;
     }
 
-    public static int subtract(final int a, final int b) {
+    private final static int subtract(final int a, final int b) {
         return a-b;
     }
 
-    public static int multiply(final int a, final int b) {
+    private final static int multiply(final int a, final int b) {
         return a*b;
     }
 
-    public static int divide(final int a, final int b) {
+    private final static int divide(final int a, final int b) {
         return a/b;
     }
 
