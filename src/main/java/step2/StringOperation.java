@@ -32,15 +32,12 @@ public final class StringOperation {
 
         int b = 0;
         char operator = ' ';
-        int result = 0;
-
         List<String> operand = Arrays.asList(input.split(" "));
+        int result = Integer.parseInt(operand.get(0));
 
         for (int i = 0; i < operand.size()-2; i+=2){
-            result = Integer.parseInt(operand.get(i));
             b = Integer.parseInt(operand.get(i+2));
             operator = operand.get(i+1).charAt(0);
-
             result = calculateFourOperation(result, b, operator);
         }
         return result;
