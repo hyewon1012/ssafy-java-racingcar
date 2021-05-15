@@ -20,12 +20,16 @@ public final class StringOperation {
         return operand.stream()
                 .map(s -> s.charAt(0))
                 .filter(Character::isDigit)
-                .mapToInt(c -> c-'0')
+                .mapToInt(c -> c -'0')
                 .reduce(0, Integer::sum);
     }
 
     public static int subtract(final List<String> operand) {
-        return 0;
+        return operand.stream()
+                .map(s -> s.charAt(0))
+                .filter(Character::isDigit)
+                .mapToInt(c -> c - '0')
+                .reduce((a,b) -> a-b).getAsInt();
     }
 
     public static int multiply(final List<String> operand) {

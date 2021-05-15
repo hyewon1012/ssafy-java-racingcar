@@ -16,8 +16,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringOperationTest {
+
     @DisplayName("덧셈 테스트")
-    @ParameterizedTest(name = "{0} 덧셈 결과는 {1} 입니다.")
+    @ParameterizedTest(name = "{0} 결과는 {1} 입니다.")
     @CsvSource(value = {"2 + 3:5", "6 + 9:15", "0 + 1:1"}, delimiter = ':')
     void 덧셈(String input, Integer expected){
         //when
@@ -30,15 +31,16 @@ public class StringOperationTest {
     }
 
     @DisplayName("뺄셈 테스트")
-    @Test
-    void 뺄셈(){
-        //given
-        String input = "5 - 3";
+    @ParameterizedTest(name = "{0} 결과는 {1} 입니다.")
+    @CsvSource(value = {"5 - 3:2", "6 - 9:-3", "1 - 1:0"}, delimiter = ':')
+    void 뺄셈(String input, Integer expected){
         //when
         List<String> operand = Arrays.asList(input.split(" "));
+        StringOperation stringOperation = StringOperation.getInstance();
+
         //then
-        int subtractResult = StringOperation.subtract(operand);
-        assertThat(subtractResult).isEqualTo(2);
+        int subtractResult = stringOperation.subtract(operand);
+        assertThat(subtractResult).isEqualTo(expected);
     }
 
     @DisplayName("곱셈 테스트")
