@@ -2,12 +2,17 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringOperationTest {
     @DisplayName("덧셈 테스트")
@@ -56,5 +61,45 @@ public class StringOperationTest {
         //then
         int divideResult = StringOperation.divide(operand);
         assertThat(divideResult).isEqualTo(1);
+    }
+
+    @DisplayName("입력값이 null 이거나 빈 공백 문자일 경우")
+    @NullAndEmptySource
+    void 공백문자열사칙연산(String input){
+        //when and then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            StringOperation.operate(input);
+        });
+    }
+
+    @DisplayName("잘못된 사칙연산 기호 사용")
+    @Test
+    void 잘못된연산기호사용(){
+        //given
+        String input = "3 // 4 ++ 5";
+        List<String> operand = Arrays.asList(input.split(" "));
+
+        /*//when
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> StringOperation.operate(operand));*/
+
+        //when and then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            StringOperation.operate(operand);
+        }).withMessageContaining("잘못된 연산 기호");
+    }
+
+    @DisplayName("올바른 사칙연산 수행")
+    @Test
+    void 사칙연산(){
+        //given
+        String input = "2 + 3 * 4 / 2";
+        List<String> operand = Arrays.asList(input.split(" "));
+
+        //when
+        int result = StringOperation.operate(operand);
+
+        //then
+        assertThat(result).isEqualTo(10);
+
     }
 }
