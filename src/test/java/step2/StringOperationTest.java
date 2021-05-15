@@ -23,7 +23,8 @@ public class StringOperationTest {
         //when
         List<String> operand = Arrays.asList(input.split(" "));
         //then
-        int addResult = StringOperation.add(operand);
+        StringOperation stringOperation = StringOperation.getInstance();
+        int addResult = stringOperation.add(operand);
         assertThat(addResult).isEqualTo(5);
     }
 
@@ -66,9 +67,11 @@ public class StringOperationTest {
     @DisplayName("입력값이 null 이거나 빈 공백 문자일 경우")
     @NullAndEmptySource
     void 공백문자열사칙연산(String input){
+        //given
+        List<String> operand = Arrays.asList(input.split(" "));
         //when and then
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringOperation.operate(input);
+            StringOperation.operate(operand);
         });
     }
 
