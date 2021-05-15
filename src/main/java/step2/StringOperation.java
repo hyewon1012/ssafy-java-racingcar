@@ -36,8 +36,8 @@ public final class StringOperation {
         int result = Integer.parseInt(operand.get(0));
 
         for (int i = 0; i < operand.size()-2; i+=2){
-            b = Integer.parseInt(operand.get(i+2));
             operator = operand.get(i+1).charAt(0);
+            b = Integer.parseInt(operand.get(i+2));
             result = calculateFourOperation(result, b, operator);
         }
         return result;
