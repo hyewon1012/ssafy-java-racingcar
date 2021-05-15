@@ -16,17 +16,20 @@ public final class StringOperation {
         return SingletonHelper.INSTANCE;
     }
 
-    private static int calculateFourOperation(int a, int b, char operator){
+    private int calculateFourOperation(int a, int b, char operator){
         switch (operator){
             case '+': return add(a, b);
             case '-': return subtract(a, b);
             case '*': return multiply(a, b);
             case '/': return divide(a, b);
+            default:
+                throw new IllegalArgumentException();
         }
-        return 0;
     }
 
-    public final static int calculate(String input){
+    public int calculate(String input){
+        if(input == null || input.equals("")) throw new IllegalArgumentException();
+
         int b = 0;
         char operator = ' ';
         int result = 0;
@@ -43,19 +46,19 @@ public final class StringOperation {
         return result;
     }
 
-    private final static int add(final int a, final int b) {
+    private int add(final int a, final int b) {
         return a+b;
     }
 
-    private final static int subtract(final int a, final int b) {
+    private int subtract(final int a, final int b) {
         return a-b;
     }
 
-    private final static int multiply(final int a, final int b) {
+    private int multiply(final int a, final int b) {
         return a*b;
     }
 
-    private final static int divide(final int a, final int b) {
+    private int divide(final int a, final int b) {
         return a/b;
     }
 

@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringOperationTest {
@@ -62,40 +61,36 @@ public class StringOperationTest {
     }
 
     @DisplayName("입력값이 null 이거나 빈 공백 문자일 경우")
+    @ParameterizedTest(name = "{0} 는 입력값이 null 이거나 공백 문자열입니다.")
     @NullAndEmptySource
     void 공백문자열사칙연산(String input){
-        //given
-        List<String> operand = Arrays.asList(input.split(" "));
         //when and then
+        StringOperation stringOperation = StringOperation.getInstance();
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringOperation.calculate(input);
+            stringOperation.calculate(input);
         });
     }
 
     @DisplayName("잘못된 사칙연산 기호 사용")
-    @Test
-    @ValueSource(strings = {"3 ** 5", "1 -- 7", "4 ?? 4"})
+    @ParameterizedTest(name = "{0} 는 잘못된 사칙연산 기호가 포함되있습니다.")
+    @ValueSource(strings = {"3 == 5", "1 && 7", "4 ?? 4"})
     void 잘못된연산기호사용(String input){
-        /*//when
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> StringOperation.operate(operand));*/
-
         //when and then
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringOperation.calculate(input);
-        }).withMessageContaining("잘못된 연산 기호");
+        StringOperation stringOperation = StringOperation.getInstance();
+        assertThatThrownBy(() -> stringOperation.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("올바른 사칙연산 수행")
-    @Test
-    void 사칙연산(){
-        //given
-        String input = "2 + 3 * 4 / 2";
-
+    @ParameterizedTest(name = "{0} 결과는 {1} 입니다.")
+    @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 + 7 / 2 - 1:3", "4 * 4 * 4 / 4:16"}, delimiter = ':')
+    void 사칙연산(String input, Integer expected){
         //when
-        int result = StringOperation.calculate(input);
+        StringOperation stringOperation = StringOperation.getInstance();
+        int result = stringOperation.calculate(input);
 
         //then
-        assertThat(result).isEqualTo(10);
+        assertThat(result).isEqualTo(expected);
 
     }
 }
