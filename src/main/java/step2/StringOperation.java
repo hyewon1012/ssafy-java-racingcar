@@ -3,9 +3,6 @@ package step2;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.DoubleToIntFunction;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public final class StringOperation {
     private static final int INITIAL_NUMBER = 0;
