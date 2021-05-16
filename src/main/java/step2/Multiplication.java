@@ -1,8 +1,8 @@
 package step2;
 
-public class Multiplication implements CalculateStrategy{
+public class Multiplication implements Operator{
     @Override
-    public int calculate(int x, int y) {
+    public int operate(int x, int y) {
         return x*y;
     }
 }

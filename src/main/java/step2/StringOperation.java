@@ -20,18 +20,24 @@ public final class StringOperation {
 
     private StringOperation() {}
 
+    private static final Operator add = new Addition();
+    private static final Operator subtract = new Subtraction();
+    private static final Operator multiply = new Multiplication();
+    private static final Operator divide = new Division();
+
     private int calculateOperation(int x, int y, char operator){
+
         if(operator == '+'){
-            return add (x,y);
+            return add.operate(x,y);
         }
         if(operator == '-'){
-            return subtract (x,y);
+            return subtract.operate(x, y);
         }
         if(operator == '*'){
-            return multiply (x,y);
+            return multiply.operate(x, y);
         }
         if(operator == '/'){
-            return divide (x,y);
+            return divide.operate(x, y);
         }
         throw new IllegalArgumentException();
     }
@@ -58,20 +64,5 @@ public final class StringOperation {
         }
     }
 
-    private int add(final int x, final int y) {
-        return x+y;
-    }
-
-    private int subtract(final int x, final int y) {
-        return x-y;
-    }
-
-    private int multiply(final int x, final int y) {
-        return x*y;
-    }
-
-    private int divide(final int x, final int y) {
-        return x/y;
-    }
 
 }
