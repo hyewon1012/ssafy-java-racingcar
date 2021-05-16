@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public final class StringOperation {
     private static final int INITIAL_NUMBER = 0;
-    
+
     public static final StringOperation getInstance(){
         return SingletonHelper.INSTANCE;
     }
@@ -20,7 +20,7 @@ public final class StringOperation {
 
     private StringOperation() {}
 
-    private int calculateFourOperation(int x, int y, char operator){
+    private int calculateOperation(int x, int y, char operator){
         if(operator == '+'){
             return add (x,y);
         }
@@ -47,7 +47,7 @@ public final class StringOperation {
         for (int i = 0; i < operand.size()-2; i+=2){
             operator = operand.get(i+1).charAt(0);
             y = Integer.parseInt(operand.get(i+2));
-            result = calculateFourOperation(result, y, operator);
+            result = calculateOperation(result, y, operator);
         }
         return result;
     }
