@@ -13,10 +13,6 @@ public final class RacingCarGame {
     private final List<RacingCar> racingCars = new ArrayList<RacingCar>();
     private final int START_IDX = 0;
 
-    public static void main(String[] args) {
-        RacingCarGame game = new RacingCarGame();
-        game.playGame();
-    }
     public void playGame(){
         //1. 사용자 입력 처리
         InputView.provideInput();
