@@ -1,5 +1,6 @@
 package step3.ui;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public final class InputView {
@@ -16,10 +17,18 @@ public final class InputView {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(NUMBER_OF_CARS);
-        numberOfCar = scanner.nextInt();
+        String inputNumberOfCar = scanner.nextLine();
+        validateInput(inputNumberOfCar);
+        numberOfCar = Integer.parseInt(inputNumberOfCar);
 
         System.out.println(ROUND);
-        round = scanner.nextInt();
+        String inputRound = scanner.nextLine();
+        validateInput(inputRound);
+        round = Integer.parseInt(inputRound);
+    }
 
+    public static void validateInput(String input){
+        Optional<String> userInput = Optional.ofNullable(input);
+        userInput.orElseThrow(() -> new IllegalArgumentException());
     }
 }

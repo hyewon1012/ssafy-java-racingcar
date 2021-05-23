@@ -7,6 +7,7 @@ import step3.domain.RacingCarGame;
 import step3.strategy.MoveStrategy;
 import step3.strategy.RandomMove;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -13,6 +13,10 @@ public final class RacingCarGame {
     private List<RacingCar> racingCars;
     private final int START_IDX = 0;
 
+    public static void main(String[] args) {
+        RacingCarGame game = new RacingCarGame();
+        game.playGame();
+    }
     public void playGame(){
         //1. 사용자 입력 처리
         InputView.provideInput();
@@ -34,7 +38,7 @@ public final class RacingCarGame {
         }
     }
 
-    private void generateRacingCars(int numberOfCar, MoveStrategy moveStrategy){
+    private void generateRacingCars(final int numberOfCar, MoveStrategy moveStrategy){
         racingCars = new ArrayList<RacingCar>();
         IntStream.range(START_IDX, numberOfCar)
                 .forEach(c -> this.racingCars.add(new RacingCar(moveStrategy)));
