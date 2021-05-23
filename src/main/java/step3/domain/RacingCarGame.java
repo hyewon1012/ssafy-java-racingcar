@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.strategy.MoveStrategy;
+import step3.strategy.RandomMove;
 import step3.ui.InputView;
 import step3.ui.ResultView;
 
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public final class RacingCarGame {
-    private final List<RacingCar> racingCarList = new ArrayList<>();
+    private final List<RacingCar> racingCars = new ArrayList<RacingCar>();
     private final int START_IDX = 0;
 
     public static void main(String[] args) {
@@ -22,14 +24,15 @@ public final class RacingCarGame {
         int round = InputView.round;
 
         //2. 자동차 객체 생성
+        MoveStrategy moveStrategy = new RandomMove();
         IntStream.range(START_IDX, numberOfCar)
-                .forEach(c -> racingCarList.add(new RacingCar()));
+                .forEach(c -> racingCars.add(new RacingCar(moveStrategy)));
 
         //3. 라운드 진행
         ResultView.printResultSentence();
         while(round-- > 0){
-            racingCarList.stream().forEach(c -> c.move());
-            ResultView.printCarTrace(racingCarList);
+            racingCars.stream().forEach(c -> c.move());
+            ResultView.printCarTrace(racingCars);
         }
 
 
