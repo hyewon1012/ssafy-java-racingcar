@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public final class RacingCarGame {
-    private final List<RacingCar> racingCars = new ArrayList<RacingCar>();
+    private List<RacingCar> racingCars;
     private final int START_IDX = 0;
-    
+
     public void playGame(){
         //1. 사용자 입력 처리
         InputView.provideInput();
@@ -20,7 +20,9 @@ public final class RacingCarGame {
         int round = InputView.round;
 
         //2. 사용자 입력에 따른 자동차 객체 생성
-        generateRacingCars(numberOfCar);
+        MoveStrategy moveStrategy = new RandomMove();
+        generateRacingCars(numberOfCar, moveStrategy);
+        this.racingCars = getRacingCars();
 
         //3. 실행 결과 문구 출력
         ResultView.printResultSentence();
@@ -32,13 +34,17 @@ public final class RacingCarGame {
         }
     }
 
-    private void generateRacingCars(int numberOfCar){
-        MoveStrategy moveStrategy = new RandomMove();
+    private void generateRacingCars(int numberOfCar, MoveStrategy moveStrategy){
+        racingCars = new ArrayList<RacingCar>();
         IntStream.range(START_IDX, numberOfCar)
                 .forEach(c -> this.racingCars.add(new RacingCar(moveStrategy)));
     }
 
     private void playRound(){
         racingCars.stream().forEach(c -> c.move());
+    }
+
+    public List<RacingCar> getRacingCars(){
+        return this.racingCars;
     }
 }
