@@ -43,7 +43,7 @@ public final class StringOperation {
         }
     }
 
-    private int operator(List<Integer> operand, List<String> operator) {
+    private int operator(final List<Integer> operand, final List<String> operator) {
         int result = operand.get(FIRST_INDEX);
         operand.remove(FIRST_INDEX);
         for (int i = FIRST_INDEX; i < operator.size(); i++){
