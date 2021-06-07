@@ -19,6 +19,7 @@ public final class StringOperation {
 
     private static final String BLANK = " ";
     private static final int FIRST_INDEX = 0;
+    private static final int EMPTY_LENGTH = 0;
 
     public int calculate(String input){
         validateEmpty(input);
@@ -37,10 +38,7 @@ public final class StringOperation {
     }
 
     public static void validateEmpty(String input){
-        Optional<String> optionalInput = Optional.ofNullable(input);
-        optionalInput.orElseThrow(() -> new IllegalArgumentException());
-
-        if(optionalInput.get().length() == 0){
+        if(Objects.isNull(input) || input.length() ==  EMPTY_LENGTH || input.isEmpty()){
             throw new IllegalArgumentException();
         }
     }
