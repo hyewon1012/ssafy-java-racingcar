@@ -8,14 +8,11 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class CarsGenerator {
-    private final static int START_IDX = 0;
     private final List<RacingCar> cars;
 
-    public CarsGenerator(final int numberOfCar, MoveStrategy moveStrategy){
+    public CarsGenerator(final int numberOfCar, List<RacingCar> cars){
         validateNumberOfCar(numberOfCar);
-        this.cars = new ArrayList<>(numberOfCar);
-        IntStream.range(START_IDX, numberOfCar)
-                .forEach(count -> this.cars.add(new RacingCar(moveStrategy)));
+        this.cars = new ArrayList<>(cars);
     }
 
     private void validateNumberOfCar(final int numberOfCar) {
