@@ -12,9 +12,16 @@ public class CarsGenerator {
     private final List<RacingCar> cars;
 
     public CarsGenerator(final int numberOfCar, MoveStrategy moveStrategy){
+        validateNumberOfCar(numberOfCar);
         this.cars = new ArrayList<>(numberOfCar);
         IntStream.range(START_IDX, numberOfCar)
                 .forEach(count -> this.cars.add(new RacingCar(moveStrategy)));
+    }
+
+    private void validateNumberOfCar(final int numberOfCar) {
+        if(numberOfCar < 1){
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<RacingCar> getRacingCars() {
