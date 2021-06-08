@@ -17,16 +17,14 @@ public final class ResultView {
     }
 
     public static void printCarTrace(List<RacingCar> racingCarList){
-        racingCarList
-                .stream()
+        racingCarList.stream()
                 .forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
         System.out.print(END_OF_LINE);
     }
 
     public static String makeTraceMark(int traceSize){
         StringBuilder sb = new StringBuilder();
-        IntStream
-                .range(START_INDEX, traceSize)
+        IntStream.range(START_INDEX, traceSize)
                 .forEach( x -> sb.append(MARK));
         return sb.toString();
     }
