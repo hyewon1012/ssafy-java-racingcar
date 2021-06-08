@@ -4,14 +4,9 @@ import step3.strategy.MoveStrategy;
 import step3.strategy.RandomMove;
 import step3.ui.InputView;
 import step3.ui.ResultView;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public final class RacingCarGame {
-    private List<RacingCar> racingCars;
-    private final static int START_IDX = 0;
 
     public static void main(String[] args) {
         RacingCarGame game = new RacingCarGame();
@@ -24,8 +19,8 @@ public final class RacingCarGame {
         Round round = new Round(InputView.round);
 
         //2. 사용자 입력에 따른 자동차 객체 생성
-        generateRacingCars(numberOfCar, new RandomMove());
-        this.racingCars = getRacingCars();
+        CarsGenerator carsGenerator = new CarsGenerator(numberOfCar, new RandomMove());
+        List<RacingCar> racingCars = carsGenerator.getRacingCars();
 
         //3. 실행 결과 문구 출력
         ResultView.printResultSentence();
@@ -33,22 +28,13 @@ public final class RacingCarGame {
         //4. 라운드 진행 후 결과 출력
         int number_of_round = round.getRound();
         while(number_of_round-- > 0){
-            playRound();
+            playRound(racingCars);
             ResultView.printCarTrace(racingCars);
         }
     }
 
-    private void generateRacingCars(final int numberOfCar, MoveStrategy moveStrategy){
-        racingCars = new ArrayList<RacingCar>();
-        IntStream.range(START_IDX, numberOfCar)
-                .forEach(count -> this.racingCars.add(new RacingCar(moveStrategy)));
-    }
-
-    private void playRound(){
+    private void playRound(final List<RacingCar> racingCars){
         racingCars.stream().forEach(c -> c.move());
     }
 
-    public List<RacingCar> getRacingCars(){
-        return this.racingCars;
-    }
 }
