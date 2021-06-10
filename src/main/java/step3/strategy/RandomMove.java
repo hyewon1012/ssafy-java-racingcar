@@ -5,8 +5,11 @@ import java.util.Random;
 public class RandomMove implements MoveStrategy{
 
     @Override
-    public int move() {
+    public boolean move() {
         Random random = new Random();
-        return random.nextInt(10);
+        if(random.nextInt(10) >= 4){
+            return true;
+        }
+        return false;
     }
 }

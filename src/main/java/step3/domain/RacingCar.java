@@ -5,7 +5,6 @@ import step3.strategy.MoveStrategy;
 public final class RacingCar {
 
     private static final int INIT_TRACE_VALUE = 0;
-    private static final int MOVING_CONDITION = 4;
     private MoveStrategy moveStrategy;
     private int trace;
 
@@ -15,7 +14,7 @@ public final class RacingCar {
     }
 
     public final int move(){
-        if(moveStrategy.move() >= MOVING_CONDITION){
+        if(moveStrategy.move()){
             this.trace++;
         }
         return this.trace;
