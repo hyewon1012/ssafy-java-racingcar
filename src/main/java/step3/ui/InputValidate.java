@@ -11,7 +11,7 @@ public class InputValidate {
         this.input = input;
     }
 
-    public static void validateInput(final String input){
+    private static void validateInput(final String input){
         if(Objects.isNull(input) || input.isEmpty() || input.length() == EMPTY_LENGTH){
             throw new IllegalArgumentException("입력값이 없습니다.");
         }
