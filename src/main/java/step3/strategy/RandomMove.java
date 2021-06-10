@@ -3,13 +3,17 @@ package step3.strategy;
 import java.util.Random;
 
 public class RandomMove implements MoveStrategy{
+    private static final int MOVE_CONDITION = 4;
+    private static final int GO = 1;
+    private static final int STOP = 0;
 
     @Override
-    public boolean move() {
+    public int move() {
         Random random = new Random();
-        if(random.nextInt(10) >= 4){
-            return true;
+        int moveSize = random.nextInt(10);
+        if(moveSize >= MOVE_CONDITION){
+            return GO;
         }
-        return false;
+        return STOP;
     }
 }

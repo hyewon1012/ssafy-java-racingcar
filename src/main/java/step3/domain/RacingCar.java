@@ -13,11 +13,10 @@ public final class RacingCar {
         this.trace = INIT_TRACE_VALUE;
     }
 
-    public final int move(){
-        if(moveStrategy.move()){
+    public final void move(){
+        if(moveStrategy.move() > 0){
             this.trace++;
         }
-        return this.trace;
     }
 
     public int getTrace(){
