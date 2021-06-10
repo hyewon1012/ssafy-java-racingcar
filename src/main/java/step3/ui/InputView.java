@@ -18,17 +18,11 @@ public final class InputView {
 
         System.out.println(NUMBER_OF_CARS);
         String inputNumberOfCar = scanner.nextLine();
-        validateInput(inputNumberOfCar);
-        numberOfCar = Integer.parseInt(inputNumberOfCar);
+        numberOfCar =  new InputValidate(inputNumberOfCar).getInput();
 
         System.out.println(ROUND);
         String inputRound = scanner.nextLine();
-        validateInput(inputRound);
-        round = Integer.parseInt(inputRound);
+        round = new InputValidate(inputRound).getInput();
     }
 
-    public static void validateInput(String input){
-        Optional<String> userInput = Optional.ofNullable(input);
-        userInput.orElseThrow(() -> new IllegalArgumentException());
-    }
 }
