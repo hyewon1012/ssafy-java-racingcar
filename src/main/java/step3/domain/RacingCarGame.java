@@ -25,10 +25,10 @@ public final class RacingCarGame {
         ResultView.printResultSentence();
 
         //4. 라운드 진행 후 결과 출력
-        int number_of_round = round.getRound();
-        while(number_of_round-- > 0){
+        while(round.hasNextRound()){
             cars.move(new RandomMove());
             ResultView.printCarTrace(cars);
+            round.nextRound();
         }
     }
 

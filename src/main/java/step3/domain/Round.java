@@ -2,7 +2,7 @@ package step3.domain;
 
 public class Round {
     private static final int MIN_NUMBER_OF_ROUND = 0;
-    private final int round;
+    private int round;
 
     public Round(final int round){
         validateRound(round);
@@ -15,7 +15,15 @@ public class Round {
         }
     }
 
-    public int getRound(){
-        return this.round;
+    public boolean hasNextRound(){
+        if(this.round > MIN_NUMBER_OF_ROUND){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void nextRound(){
+        this.round--;
     }
 }

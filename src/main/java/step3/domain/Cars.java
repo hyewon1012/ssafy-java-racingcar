@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Cars {
+    private static final int START_INDEX = 0;
     private final List<RacingCar> cars;
 
     public Cars(final int numberOfCar, List<RacingCar> cars){
@@ -15,7 +16,7 @@ public class Cars {
     }
 
     private List<RacingCar> generateCars(final int numberOfCar, List<RacingCar> cars) {
-        IntStream.range(0, numberOfCar)
+        IntStream.range(START_INDEX, numberOfCar)
                 .forEach(count -> cars.add(new RacingCar()));
         return cars;
     }
