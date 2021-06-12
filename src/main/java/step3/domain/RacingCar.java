@@ -5,16 +5,15 @@ import step3.strategy.MoveStrategy;
 public final class RacingCar {
 
     private static final int INIT_TRACE_VALUE = 0;
-    private MoveStrategy moveStrategy;
+
     private int trace;
 
-    public RacingCar(MoveStrategy moveStrategy){
-        this.moveStrategy = moveStrategy;
+    public RacingCar(){
         this.trace = INIT_TRACE_VALUE;
     }
 
-    public final void move(){
-        if(moveStrategy.move() > 0){
+    public final void move(MoveStrategy moveStrategy){
+        if(moveStrategy.move() > INIT_TRACE_VALUE){
             this.trace++;
         }
     }

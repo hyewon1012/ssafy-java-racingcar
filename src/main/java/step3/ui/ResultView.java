@@ -1,5 +1,6 @@
 package step3.ui;
 
+import step3.domain.Cars;
 import step3.domain.RacingCar;
 
 import java.util.List;
@@ -16,9 +17,11 @@ public final class ResultView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public static void printCarTrace(List<RacingCar> racingCarList){
-        racingCarList.stream()
-                .forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
+    public static void printCarTrace(Cars cars){
+//        cars.stream()
+//                .forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
+        List<RacingCar> printedCars = cars.getRacingCars();
+        printedCars.stream().forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
         System.out.print(END_OF_LINE);
     }
 
