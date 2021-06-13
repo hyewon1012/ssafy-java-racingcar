@@ -31,7 +31,7 @@ public final class ResultView {
         System.out.print(END_OF_LINE);
     }
 
-    public static void printCarName(RacingCar racingCar){
+    private static void printCarName(RacingCar racingCar){
         StringBuilder sb = new StringBuilder();
         sb.append(racingCar.getName()).append(" : ");
         System.out.print(sb.toString());
@@ -41,7 +41,7 @@ public final class ResultView {
         System.out.print(makeTraceMark(car.getPosition()));
     }
 
-    public static String makeTraceMark(int position){
+    private static String makeTraceMark(int position){
         StringBuilder sb = new StringBuilder();
         IntStream.range(START_INDEX, position)
                 .forEach( x -> sb.append(MARK));

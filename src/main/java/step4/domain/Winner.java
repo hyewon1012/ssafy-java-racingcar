@@ -3,6 +3,7 @@ package step4.domain;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Winner {
@@ -30,5 +31,22 @@ public class Winner {
 
     public List<RacingCar> getWinner(){
         return this.winners;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Winner)){
+            return false;
+        }
+        Winner winner = (Winner) obj;
+        return Objects.equals(this.winners, winner.getWinner());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.winners);
     }
 }
