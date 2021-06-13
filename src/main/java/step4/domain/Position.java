@@ -1,5 +1,7 @@
 package step4.domain;
 
+import java.util.Objects;
+
 public class Position {
     private int position;
 
@@ -21,4 +23,22 @@ public class Position {
     public int getPosition(){
         return this.position;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof Position)){
+            return false;
+        }
+        Position position = (Position) obj;
+        return this.position == position.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
+    }
+
 }

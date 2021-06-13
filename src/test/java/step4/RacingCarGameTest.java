@@ -38,7 +38,20 @@ public class RacingCarGameTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
         assertThat(e.getMessage()).isEqualTo("자동차 이름은 5글자를 초과할 수 없습니다");
     }
+    
+    @DisplayName("Position 인스턴스 생성 및 비교 테스트")
+    @Test
+    void Position생성및비교테스트(){
 
+        //when
+        int positionSize = 1;
+        Position actualPosition = new Position(positionSize);
+        Position expectedPosition = new Position(positionSize);
+
+        //then
+        assertThat(actualPosition).isEqualTo(expectedPosition);
+    }
+    
     @DisplayName("자동차 이동 테스트")
     @Test
     void 자동차이동테스트(){
@@ -50,12 +63,13 @@ public class RacingCarGameTest {
         car.move(moveStrategy);
 
         Position actualPosition = car.getPosition();
+        int actualPositionSize = actualPosition.getPosition();
 
         Position position = new Position(1);
         int expectedPositionSize = position.getPosition();
 
         //then
-        assertThat(actualPosition).isEqualTo(expectedPositionSize);
+        assertThat(actualPositionSize).isEqualTo(expectedPositionSize);
     }
 
     @DisplayName("우승자 검증 테스트")
