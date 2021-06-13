@@ -29,6 +29,10 @@ public final class RacingCarGame {
             ResultView.printCarTrace(cars);
             round.nextRound();
         }
+
+        //5. 우승자 출력
+        Winner winner = new Winner(cars);
+        ResultView.printWinner(winner);
     }
 
 }

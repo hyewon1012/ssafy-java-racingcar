@@ -3,8 +3,10 @@ package step4.ui;
 import step4.domain.Cars;
 import step4.domain.Position;
 import step4.domain.RacingCar;
+import step4.domain.Winner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class ResultView {
@@ -24,11 +26,24 @@ public final class ResultView {
         System.out.print(END_OF_LINE);
     }
 
-    public static String makeTraceMark(Position position){
+    public static String makeTraceMark(int position){
         StringBuilder sb = new StringBuilder();
-        IntStream.range(START_INDEX, position.getPosition())
+        IntStream.range(START_INDEX, position)
                 .forEach( x -> sb.append(MARK));
         return sb.toString();
+    }
+
+    public static void printWinner(Winner winner){
+        StringBuilder sb = new StringBuilder();
+
+        List<RacingCar> winners = winner.getWinner();
+        String winnerNames = winners.stream()
+                .map(car -> car.getName())
+                .collect(Collectors.joining(","));
+        sb.append(winnerNames).append("가 최종 우승했습니다.");
+
+        System.out.print(sb.toString());
+        System.out.print(END_OF_LINE);
     }
 
 }
