@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import step4.domain.Cars;
 import step4.domain.RacingCar;
 import step4.domain.Winner;
+import step4.strategy.MoveStrategy;
 import step4.strategy.RandomMove;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,9 @@ public class RacingCarGameTest {
         String carName = "joy";
         RacingCar car = new RacingCar(carName);
 
-        car.move(new RandomMove());
+        MoveStrategy moveStrategy = () -> true;
+        car.move(moveStrategy);
+
         int positionSize = car.getPosition();
 
         Position position = new Position(1);
