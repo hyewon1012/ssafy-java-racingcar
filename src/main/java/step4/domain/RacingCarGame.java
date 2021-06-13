@@ -26,7 +26,7 @@ public final class RacingCarGame {
         //4. 라운드 진행 후 결과 출력
         while(round.hasNextRound()){
             cars.move(new RandomMove());
-            ResultView.printCarTrace(cars);
+            ResultView.printCarInfo(cars);
             round.nextRound();
         }
 

@@ -20,10 +20,25 @@ public final class ResultView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public static void printCarTrace(Cars cars){
+    public static void printCarInfo(Cars cars){
         List<RacingCar> printedCars = cars.getRacingCars();
-        printedCars.stream().forEach(c -> System.out.println(makeTraceMark(c.getPosition())));
+        printedCars.stream()
+                .forEach(car -> {
+                    printCarName(car);
+                    printCarPosition(car);
+                    System.out.print(END_OF_LINE);
+                });
         System.out.print(END_OF_LINE);
+    }
+
+    public static void printCarName(RacingCar racingCar){
+        StringBuilder sb = new StringBuilder();
+        sb.append(racingCar.getName()).append(" : ");
+        System.out.print(sb.toString());
+    }
+
+    private static void printCarPosition(RacingCar car) {
+        System.out.print(makeTraceMark(car.getPosition()));
     }
 
     public static String makeTraceMark(int position){
