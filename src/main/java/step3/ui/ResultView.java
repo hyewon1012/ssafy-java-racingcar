@@ -18,8 +18,6 @@ public final class ResultView {
     }
 
     public static void printCarTrace(Cars cars){
-//        cars.stream()
-//                .forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
         List<RacingCar> printedCars = cars.getRacingCars();
         printedCars.stream().forEach(c -> System.out.println(makeTraceMark(c.getTrace())));
         System.out.print(END_OF_LINE);
