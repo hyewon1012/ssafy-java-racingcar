@@ -33,8 +33,12 @@ public final class RacingCar {
         }
     }
 
-    public Position getPosition(){
-        return this.position;
+    public String getName(){
+        return this.name;
+    }
+
+    public int getPosition(){
+        return this.position.getPosition();
     }
 
     @Override

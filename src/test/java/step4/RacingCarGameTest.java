@@ -42,7 +42,6 @@ public class RacingCarGameTest {
     @DisplayName("Position 인스턴스 생성 및 비교 테스트")
     @Test
     void Position생성및비교테스트(){
-
         //when
         int positionSize = 1;
         Position actualPosition = new Position(positionSize);
@@ -62,8 +61,7 @@ public class RacingCarGameTest {
         MoveStrategy moveStrategy = () -> true;
         car.move(moveStrategy);
 
-        Position actualPosition = car.getPosition();
-        int actualPositionSize = actualPosition.getPosition();
+        int actualPositionSize = car.getPosition();
 
         Position position = new Position(1);
         int expectedPositionSize = position.getPosition();
@@ -80,20 +78,22 @@ public class RacingCarGameTest {
         Cars cars = new Cars(carNames, new ArrayList<>());
         cars.move(new RandomMove());
 
-        List<RacingCar> racingCars = cars.getRacingCars();
+        Winner winner = new Winner(cars);
+        winner.pickWinners(cars);
+        List<RacingCar> winners = winner.getWinner();
 
-        List<String> expectedWinners = new ArrayList<>();
         int max = Integer.MIN_VALUE;
+        List<RacingCar> expectedWinners = new ArrayList<>();
 
+        List<RacingCar> racingCars = cars.getRacingCars();
         for (int i=0; i < racingCars.size(); i++){
             int pos = racingCars.get(i).getPosition();
             if(max <= pos){
-                expectedWinners.add(racingCars.get(i).getName());
+                expectedWinners.add(racingCars.get(i));
             }
         }
-        Winner winners = cars.findWinner();
-        List<String> winnerNames = winners.getWinners();
 
-        assertThat(winnerNames).isEqualTo(expectedWinners);
+        //then
+        assertThat(winners).isEqualTo(expectedWinners);
     }
 }
