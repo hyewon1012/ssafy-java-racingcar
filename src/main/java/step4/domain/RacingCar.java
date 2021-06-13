@@ -2,24 +2,56 @@ package step4.domain;
 
 import step4.strategy.MoveStrategy;
 
+import java.util.Objects;
+
 public final class RacingCar {
 
     private static final int INIT_TRACE_VALUE = 0;
+    private static final int NAME_LENGTH_CONDITION = 5;
 
-    private int trace;
+    private String name;
+    private int position;
 
-    public RacingCar(){
-        this.trace = INIT_TRACE_VALUE;
+    public RacingCar(String name){
+        inputNameValidate(name);
+        this.name = name;
+        this.position = INIT_TRACE_VALUE;
     }
 
-    public final void move(MoveStrategy moveStrategy){
-        if(moveStrategy.move() > INIT_TRACE_VALUE){
-            this.trace++;
+    private void inputNameValidate(String name) {
+        if(name.length() > NAME_LENGTH_CONDITION){
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다");
+        }
+        if(Objects.isNull(name) || name.length() == 0){
+            throw new IllegalArgumentException("자동차 이름은 한글자 이상이어야 합니다.");
         }
     }
 
-    public int getTrace(){
-        return this.trace;
+    public final void move(MoveStrategy moveStrategy){
+        if(moveStrategy.move()){
+            this.position++;
+        }
+    }
+
+    public int getPosition(){
+        return this.position;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof RacingCar)){
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) obj;
+        return (name == racingCar.name) && (position == racingCar.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 
 }

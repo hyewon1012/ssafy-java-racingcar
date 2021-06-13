@@ -10,14 +10,16 @@ public class Cars {
     private static final int START_INDEX = 0;
     private final List<RacingCar> cars;
 
-    public Cars(final int numberOfCar, List<RacingCar> cars){
+    public Cars(final String[] carNames, List<RacingCar> cars){
+        int numberOfCar = carNames.length;
         validateNumberOfCar(numberOfCar);
-        this.cars = generateCars(numberOfCar, cars);
+        this.cars = generateCars(carNames, cars);
     }
 
-    private List<RacingCar> generateCars(final int numberOfCar, List<RacingCar> cars) {
+    private List<RacingCar> generateCars(final String[] carNames, List<RacingCar> cars) {
+        int numberOfCar = carNames.length;
         IntStream.range(START_INDEX, numberOfCar)
-                .forEach(count -> cars.add(new RacingCar()));
+                .forEach(idx -> cars.add(new RacingCar(carNames[idx])));
         return cars;
     }
 

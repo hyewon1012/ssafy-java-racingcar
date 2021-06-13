@@ -14,11 +14,11 @@ public final class RacingCarGame {
     }
     public void playGame(){
         //1. 사용자 입력 처리
-        int numberOfCar = InputView.enterNumberOfCar();
+        String[] inputNames = InputView.enterCarNames();
         Round round = new Round(InputView.enterRound());
 
         //2. 사용자 입력에 따른 자동차 객체 생성
-        Cars cars = new Cars(numberOfCar, new ArrayList<>());
+        Cars cars = new Cars(inputNames, new ArrayList<>());
 
         //3. 실행 결과 문구 출력
         ResultView.printResultSentence();
