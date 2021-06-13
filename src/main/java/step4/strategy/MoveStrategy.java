@@ -2,5 +2,5 @@ package step4.strategy;
 
 @FunctionalInterface
 public interface MoveStrategy {
-    public int move();
+    public boolean move();
 }
