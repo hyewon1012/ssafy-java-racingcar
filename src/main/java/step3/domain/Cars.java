@@ -2,8 +2,8 @@ package step3.domain;
 
 import step3.strategy.MoveStrategy;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Cars {
@@ -32,6 +32,23 @@ public class Cars {
     }
 
     public List<RacingCar> getRacingCars() {
-        return Collections.unmodifiableList(this.cars);
+        return this.cars;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this){
+            return true;
+        }
+        if(!(obj instanceof Cars)){
+            return false;
+        }
+        Cars c = (Cars) obj;
+        return Objects.equals(this.cars, c.getRacingCars());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.cars);
     }
 }

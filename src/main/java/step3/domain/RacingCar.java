@@ -21,4 +21,5 @@ public final class RacingCar {
     public int getTrace(){
         return this.trace;
     }
+
 }

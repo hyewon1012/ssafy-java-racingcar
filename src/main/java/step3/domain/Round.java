@@ -1,5 +1,7 @@
 package step3.domain;
 
+import java.util.Objects;
+
 public class Round {
     private static final int MIN_NUMBER_OF_ROUND = 0;
     private int round;
@@ -25,5 +27,26 @@ public class Round {
 
     public void nextRound(){
         this.round--;
+    }
+
+    public int getRound(){
+        return this.round;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this){
+            return true;
+        }
+        if(!(obj instanceof Round)){
+            return false;
+        }
+        Round round = (Round) obj;
+        return Objects.equals(this.round, round.getRound());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.round);
     }
 }
