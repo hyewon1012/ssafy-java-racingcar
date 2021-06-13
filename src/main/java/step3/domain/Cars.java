@@ -27,7 +27,7 @@ public class Cars {
 
     private void validateNumberOfCar(final int numberOfCar) {
         if(numberOfCar < 1){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
         }
     }
 

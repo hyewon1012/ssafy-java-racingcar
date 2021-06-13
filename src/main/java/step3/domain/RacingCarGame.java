@@ -14,9 +14,8 @@ public final class RacingCarGame {
     }
     public void playGame(){
         //1. 사용자 입력 처리
-        InputView.provideInput();
-        int numberOfCar = InputView.numberOfCar;
-        Round round = new Round(InputView.round);
+        int numberOfCar = InputView.enterNumberOfCar();
+        Round round = new Round(InputView.enterRound());
 
         //2. 사용자 입력에 따른 자동차 객체 생성
         Cars cars = new Cars(numberOfCar, new ArrayList<>());
