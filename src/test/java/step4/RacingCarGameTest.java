@@ -3,6 +3,7 @@ package step4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.Cars;
+import step4.domain.Position;
 import step4.domain.RacingCar;
 import step4.domain.Winner;
 import step4.strategy.MoveStrategy;
@@ -48,13 +49,13 @@ public class RacingCarGameTest {
         MoveStrategy moveStrategy = () -> true;
         car.move(moveStrategy);
 
-        int positionSize = car.getPosition();
+        Position actualPosition = car.getPosition();
 
         Position position = new Position(1);
         int expectedPositionSize = position.getPosition();
 
         //then
-        assertThat(positionSize).isEqualTo(expectedPositionSize);
+        assertThat(actualPosition).isEqualTo(expectedPositionSize);
     }
 
     @DisplayName("우승자 검증 테스트")

@@ -1,6 +1,7 @@
 package step4.ui;
 
 import step4.domain.Cars;
+import step4.domain.Position;
 import step4.domain.RacingCar;
 
 import java.util.List;
@@ -23,9 +24,9 @@ public final class ResultView {
         System.out.print(END_OF_LINE);
     }
 
-    public static String makeTraceMark(int traceSize){
+    public static String makeTraceMark(Position position){
         StringBuilder sb = new StringBuilder();
-        IntStream.range(START_INDEX, traceSize)
+        IntStream.range(START_INDEX, position.getPosition())
                 .forEach( x -> sb.append(MARK));
         return sb.toString();
     }

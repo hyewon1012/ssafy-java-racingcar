@@ -10,12 +10,12 @@ public final class RacingCar {
     private static final int NAME_LENGTH_CONDITION = 5;
 
     private String name;
-    private int position;
+    private Position position;
 
     public RacingCar(String name){
         inputNameValidate(name);
         this.name = name;
-        this.position = INIT_TRACE_VALUE;
+        this.position = new Position(INIT_TRACE_VALUE);
     }
 
     private void inputNameValidate(String name) {
@@ -29,11 +29,11 @@ public final class RacingCar {
 
     public final void move(MoveStrategy moveStrategy){
         if(moveStrategy.move()){
-            this.position++;
+            position.goForward();
         }
     }
 
-    public int getPosition(){
+    public Position getPosition(){
         return this.position;
     }
 
