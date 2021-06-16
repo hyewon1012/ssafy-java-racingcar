@@ -31,10 +31,9 @@ class RacingCarTest {
         assertThat(e.getMessage()).isEqualTo("자동차 이름은 5글자를 초과할 수 없습니다");
     }
 
-    @DisplayName("자동차 이름 검증 테스트")
+    @DisplayName("같은 이름을 가진 자동차가 동일한 자동차 객체인지 테스트")
     @Test
-    void 자동차이름검증테스트(){
-
+    void 동일이름을가진자동차인스턴스비교테스트(){
         //when
         String name = "elsa";
         RacingCar racingCar = new RacingCar(name);
