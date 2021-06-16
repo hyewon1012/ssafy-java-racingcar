@@ -16,20 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarGameTest {
 
-    @DisplayName("자동차 생성 테스트")
-    @Test
-    void 자동차생성테스트(){
-        //when
-        String[] carNames = {"joy","elsa","anna"};
-        ArrayList<RacingCar> racingCars = new ArrayList<>();
-
-        Cars cars = new Cars(carNames, racingCars);
-        Cars expectedCars = new Cars(carNames, racingCars);
-
-        //then
-        assertThat(cars).isEqualTo(expectedCars);
-    }
-
     @DisplayName("5글자 이상의 이름을 가진 자동차 생성")
     @Test
     void 잘못된이름사용(){
@@ -49,25 +35,6 @@ public class RacingCarGameTest {
 
         //then
         assertThat(actualPosition).isEqualTo(expectedPosition);
-    }
-    
-    @DisplayName("자동차 이동 테스트")
-    @Test
-    void 자동차이동테스트(){
-        //when
-        String carName = "joy";
-        RacingCar car = new RacingCar(carName);
-
-        MoveStrategy moveStrategy = () -> true;
-        car.move(moveStrategy);
-
-        int actualPositionSize = car.getPosition();
-
-        Position position = new Position(1);
-        int expectedPositionSize = position.getPosition();
-
-        //then
-        assertThat(actualPositionSize).isEqualTo(expectedPositionSize);
     }
 
     @DisplayName("우승자 생성 및 검증 테스트")
