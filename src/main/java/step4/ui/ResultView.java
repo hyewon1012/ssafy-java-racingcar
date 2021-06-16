@@ -38,7 +38,7 @@ public final class ResultView {
     }
 
     private static void printCarPosition(RacingCar car) {
-        System.out.print(makeTraceMark(car.getPosition()));
+        System.out.print(makeTraceMark(car.getPosition().getPosition()));
     }
 
     private static String makeTraceMark(int position){

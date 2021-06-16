@@ -1,8 +1,6 @@
 package step4.domain;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -16,14 +14,14 @@ public class Winner {
     public List<RacingCar> pickWinners(Cars cars){
         List<RacingCar> racingCars = cars.getRacingCars();
         //우승자의 최대 position value 찾기
-        RacingCar racingCar = racingCars.stream()
-                .max(Comparator.comparing(RacingCar::getPosition))
-                .orElseThrow(NoSuchElementException::new);
-
-        int max = racingCar.getPosition();
+        int max = racingCars.stream()
+                .map(RacingCar::getPosition)
+                .mapToInt(Position::getPosition)
+                .max()
+                .getAsInt();
 
         List<RacingCar> winners = racingCars.stream()
-                .filter(car -> car.getPosition() == max)
+                .filter(car -> car.getPosition().getPosition() == max)
                 .collect(Collectors.toList());
 
         return winners;

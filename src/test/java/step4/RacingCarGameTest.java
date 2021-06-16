@@ -34,7 +34,7 @@ public class RacingCarGameTest {
         //when
         String[] carNames = {"joy", "elsa", "anna"};
         Cars cars = new Cars(carNames, new ArrayList<>());
-        
+
         cars.move(new RandomMove());
 
         Winner winner = new Winner(cars);

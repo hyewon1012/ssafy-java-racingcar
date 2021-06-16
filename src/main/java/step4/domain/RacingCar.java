@@ -37,8 +37,8 @@ public final class RacingCar {
         return this.name;
     }
 
-    public int getPosition(){
-        return this.position.getPosition();
+    public Position getPosition(){
+        return this.position;
     }
 
     @Override
@@ -50,7 +50,7 @@ public final class RacingCar {
             return false;
         }
         RacingCar racingCar = (RacingCar) obj;
-        return (name == racingCar.name) && (position == racingCar.position);
+        return (name == racingCar.name) && (Objects.equals(position, racingCar.getPosition()));
     }
 
     @Override

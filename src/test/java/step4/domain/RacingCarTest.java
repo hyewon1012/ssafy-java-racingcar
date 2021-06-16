@@ -54,12 +54,10 @@ class RacingCarTest {
         MoveStrategy moveStrategy = () -> true;
         racingCar.move(moveStrategy);
 
-        int actualPositionSize = racingCar.getPosition();
+        Position actualPosition = racingCar.getPosition();
         Position expectedPosition = new Position(1);
 
-        int expectedPositionSize = expectedPosition.getPosition();
-
         //then
-        assertThat(actualPositionSize).isEqualTo(expectedPositionSize);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 }

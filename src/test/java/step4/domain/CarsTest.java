@@ -48,13 +48,11 @@ class CarsTest {
         MoveStrategy moveStrategy = () -> true;
         car.move(moveStrategy);
 
-        int actualPositionSize = car.getPosition();
-
-        Position position = new Position(1);
-        int expectedPositionSize = position.getPosition();
+        Position actualPosition = car.getPosition();
+        Position expectedPosition = new Position(1);
 
         //then
-        assertThat(actualPositionSize).isEqualTo(expectedPositionSize);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
     @DisplayName("자동차경주에 사용되는 자동차 인스턴스 비교 테스트")
