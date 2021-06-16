@@ -8,10 +8,6 @@ import java.util.ArrayList;
 
 public final class RacingCarGame {
 
-    public static void main(String[] args) {
-        RacingCarGame game = new RacingCarGame();
-        game.playGame();
-    }
     public void playGame(){
         //1. 사용자 입력 처리
         String[] inputNames = InputView.enterCarNames();
