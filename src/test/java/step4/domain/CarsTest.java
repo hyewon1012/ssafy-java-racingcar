@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarsTest {
     @DisplayName("자동차 생성 테스트")
@@ -22,6 +23,19 @@ class CarsTest {
 
         //then
         assertThat(cars).isEqualTo(expectedCars);
+    }
+
+    @DisplayName("자동차 이름 공백 입력시 자동차 생성 테스트")
+    @Test
+    void 자동차이름공백입력시자동차생성테스트(){
+        //when
+        String[] carNames = {};
+        ArrayList<RacingCar> racingCars = new ArrayList<>();
+
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new Cars(carNames, racingCars));
+
+        //then
+        assertThat(e.getMessage()).isEqualTo("자동차는 1대 이상이어야 합니다.");
     }
 
     @DisplayName("자동차 이동 테스트")
