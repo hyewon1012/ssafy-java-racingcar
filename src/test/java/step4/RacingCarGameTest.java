@@ -16,15 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarGameTest {
 
-    @DisplayName("5글자 이상의 이름을 가진 자동차 생성")
-    @Test
-    void 잘못된이름사용(){
-        //when and then
-        String carName = "christopher";
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
-        assertThat(e.getMessage()).isEqualTo("자동차 이름은 5글자를 초과할 수 없습니다");
-    }
-    
     @DisplayName("Position 인스턴스 생성 및 비교 테스트")
     @Test
     void Position생성및비교테스트(){
