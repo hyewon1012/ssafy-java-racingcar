@@ -24,11 +24,20 @@ class RacingCarTest {
 
     @DisplayName("5글자 이상의 이름을 가진 자동차 생성")
     @Test
-    void 잘못된이름사용(){
+    void 다섯글자이상의이름을가진자동차생성(){
         //when and then
         String carName = "christopher";
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
-        assertThat(e.getMessage()).isEqualTo("자동차 이름은 5글자를 초과할 수 없습니다");
+        assertThat(e.getMessage()).isEqualTo("자동차 이름은 5글자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("공백 이름을 가진 자동차 생성")
+    @Test
+    void 공백이름을가진자동차생성(){
+        //when and then
+        String carName = "";
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
+        assertThat(e.getMessage()).isEqualTo("자동차 이름은 한글자 이상이어야 합니다.");
     }
 
     @DisplayName("같은 이름을 가진 자동차가 동일한 자동차 객체인지 테스트")
@@ -48,13 +57,31 @@ class RacingCarTest {
     void 자동차이동테스트(){
         //when
         String name = "anna";
+        int moveSize = 3;
         RacingCar racingCar = new RacingCar(name);
 
         MoveStrategy moveStrategy = () -> true;
-        racingCar.move(moveStrategy);
+        for (int i=0; i < moveSize; i++){
+            racingCar.move(moveStrategy);
+        }
 
         Position actualPosition = racingCar.getPosition();
-        Position expectedPosition = new Position(1);
+        Position expectedPosition = new Position(moveSize);
+
+        //then
+        assertThat(actualPosition).isEqualTo(expectedPosition);
+    }
+
+
+    @DisplayName("자동차 객체 생성시 초기 위치 검증 테스트")
+    @Test
+    void 자동차객체생성시초기위치검증테스트(){
+        //when
+        String name = "elsa";
+        RacingCar racingCar = new RacingCar(name);
+
+        Position actualPosition = racingCar.getPosition();
+        Position expectedPosition = new Position(0);
 
         //then
         assertThat(actualPosition).isEqualTo(expectedPosition);

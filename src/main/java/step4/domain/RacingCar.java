@@ -20,7 +20,7 @@ public final class RacingCar {
 
     private void inputNameValidate(String name) {
         if(name.length() > NAME_LENGTH_CONDITION){
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다");
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
         if(Objects.isNull(name) || name.length() == 0){
             throw new IllegalArgumentException("자동차 이름은 한글자 이상이어야 합니다.");
