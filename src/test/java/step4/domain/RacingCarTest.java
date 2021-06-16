@@ -12,7 +12,6 @@ class RacingCarTest {
     @DisplayName("같은 이름을 가진 자동차 생성 테스트")
     @Test
     void 같은이름을가진자동차생성테스트(){
-
         //when
         String name = "joy";
         RacingCar racingCar = new RacingCar(name);
