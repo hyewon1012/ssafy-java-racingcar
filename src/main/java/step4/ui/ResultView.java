@@ -33,7 +33,7 @@ public final class ResultView {
 
     private static void printCarName(RacingCar racingCar){
         StringBuilder sb = new StringBuilder();
-        sb.append(racingCar.getName()).append(" : ");
+        sb.append(racingCar.getName().getName()).append(" : ");
         System.out.print(sb.toString());
     }
 
@@ -53,7 +53,7 @@ public final class ResultView {
 
         List<RacingCar> winners = winner.getWinner();
         String winnerNames = winners.stream()
-                .map(car -> car.getName())
+                .map(car -> car.getName().getName())
                 .collect(Collectors.joining(","));
         sb.append(winnerNames).append("가 최종 우승했습니다.");
 

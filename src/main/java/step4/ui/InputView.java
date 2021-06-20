@@ -19,8 +19,7 @@ public final class InputView {
 
     public static String[] enterCarNames(){
         System.out.println(CAR_NAMES);
-        String[] names = scanner.nextLine().split(",");
-        return names;
+        return scanner.nextLine().split(",");
     }
 
     public static int enterRound(){
