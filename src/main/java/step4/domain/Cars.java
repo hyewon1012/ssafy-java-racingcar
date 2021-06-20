@@ -4,33 +4,24 @@ import step4.strategy.MoveStrategy;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Cars {
-    private static final int START_INDEX = 0;
     private final List<RacingCar> cars;
 
-    public Cars(final String[] carNames, List<RacingCar> cars){
-        int numberOfCar = carNames.length;
-        validateNumberOfCar(numberOfCar);
-        this.cars = generateCars(carNames, cars);
+    public Cars(final Names carNames){
+        this.cars = generateCars(carNames);
     }
 
-    private List<RacingCar> generateCars(final String[] carNames, List<RacingCar> cars) {
-        int numberOfCar = carNames.length;
-        IntStream.range(START_INDEX, numberOfCar)
-                .forEach(idx -> cars.add(new RacingCar(carNames[idx])));
-        return cars;
+    private List<RacingCar> generateCars(final Names carNames) {
+        return carNames.getNames().stream()
+                .map(name -> new RacingCar(name))
+                .collect(Collectors.toList());
     }
 
     public void move(MoveStrategy moveStrategy){
         cars.stream().forEach(car -> car.move(moveStrategy));
-    }
-
-    private void validateNumberOfCar(final int numberOfCar) {
-        if(numberOfCar < 1){
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
-        }
     }
 
     public List<RacingCar> getRacingCars() {
