@@ -18,11 +18,7 @@ public class Round {
     }
 
     public boolean hasNextRound(){
-        if(this.round > MIN_NUMBER_OF_ROUND){
-            return true;
-        }else{
-            return false;
-        }
+        return this.round > MIN_NUMBER_OF_ROUND;
     }
 
     public void nextRound(){

@@ -9,9 +9,6 @@ public class RandomMove implements MoveStrategy {
     public boolean move() {
         Random random = new Random();
         int moveSize = random.nextInt(10);
-        if(moveSize >= MOVE_CONDITION){
-            return true;
-        }
-        return false;
+        return moveSize >= MOVE_CONDITION;
     }
 }
