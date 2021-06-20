@@ -7,7 +7,6 @@ import java.util.Objects;
 public final class RacingCar {
 
     private static final int INIT_TRACE_VALUE = 0;
-    private static final int NAME_LENGTH_CONDITION = 5;
 
     private Name name;
     private Position position;
@@ -44,7 +43,7 @@ public final class RacingCar {
             return false;
         }
         RacingCar racingCar = (RacingCar) obj;
-        return (name == racingCar.name) && (Objects.equals(position, racingCar.getPosition()));
+        return (Objects.equals(name, racingCar.getName())) && (Objects.equals(position, racingCar.getPosition()));
     }
 
     @Override
