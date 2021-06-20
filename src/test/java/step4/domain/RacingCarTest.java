@@ -45,7 +45,7 @@ class RacingCarTest {
         //when
         String name = "elsa";
         RacingCar racingCar = new RacingCar(name);
-        String expectedName = racingCar.getName();
+        String expectedName = racingCar.getName().getName();
 
         //then
         assertThat(name).isEqualTo(expectedName);

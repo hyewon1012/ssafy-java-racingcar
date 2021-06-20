@@ -13,11 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WinnerTest {
     String[] carNames = {"joy","elsa","anna"};
+    Names names = new Names(carNames);
     Cars cars;
 
     @BeforeEach
     public void beforeEach(){
-        cars = new Cars(carNames, new ArrayList<>());
+        cars = new Cars(names);
         cars.move(new RandomMove());
     }
 

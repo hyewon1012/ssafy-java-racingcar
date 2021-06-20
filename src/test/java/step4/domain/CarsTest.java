@@ -4,11 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.strategy.MoveStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarsTest {
     @DisplayName("자동차 생성 테스트")
@@ -16,26 +14,13 @@ class CarsTest {
     void 자동차생성테스트(){
         //when
         String[] carNames = {"joy","elsa","anna"};
-        ArrayList<RacingCar> racingCars = new ArrayList<>();
+        Names names = new Names(carNames);
 
-        Cars cars = new Cars(carNames, racingCars);
-        Cars expectedCars = new Cars(carNames, racingCars);
+        Cars cars = new Cars(names);
+        Cars expectedCars = new Cars(names);
 
         //then
         assertThat(cars).isEqualTo(expectedCars);
-    }
-
-    @DisplayName("자동차 이름 공백 입력시 자동차 생성 테스트")
-    @Test
-    void 자동차이름공백입력시자동차생성테스트(){
-        //when
-        String[] carNames = {};
-        ArrayList<RacingCar> racingCars = new ArrayList<>();
-
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> new Cars(carNames, racingCars));
-
-        //then
-        assertThat(e.getMessage()).isEqualTo("자동차는 1대 이상이어야 합니다.");
     }
 
     @DisplayName("자동차 이동 테스트")
@@ -60,7 +45,7 @@ class CarsTest {
     void 자동차인스턴스비교테스트(){
         //when
         String[] carNames = {"joy","elsa","anna"};
-        Cars cars = new Cars(carNames, new ArrayList<>());
+        Cars cars = new Cars(new Names(carNames));
 
         List<RacingCar> racingCars = cars.getRacingCars();
         List<RacingCar> otherRacingCars = cars.getRacingCars();
