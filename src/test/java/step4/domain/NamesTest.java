@@ -3,7 +3,10 @@ package step4.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,7 +18,11 @@ class NamesTest {
         //when
         String[] userNames = {"elsa","anna","olaf"};
         Names names = new Names(userNames);
-        Names expectedNames = new Names(userNames);
+
+        List<Name> expectedNames = new ArrayList<>();
+        for(int i=0; i < userNames.length; i++){
+            expectedNames.add(new Name(userNames[i]));
+        }
 
         //then
         assertThat(names).isEqualTo(expectedNames);

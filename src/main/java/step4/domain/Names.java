@@ -15,6 +15,10 @@ public class Names {
                 .collect(Collectors.toList());
     }
 
+    public Names(List<Name> name){
+        this.names = name;
+    }
+
     public List<Name> getNames(){
         return this.names;
     }
