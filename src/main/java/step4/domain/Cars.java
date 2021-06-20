@@ -2,6 +2,7 @@ package step4.domain;
 
 import step4.strategy.MoveStrategy;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class Cars {
     }
 
     public List<RacingCar> getRacingCars() {
-        return this.cars;
+        return Collections.unmodifiableList(this.cars);
     }
 
     @Override
