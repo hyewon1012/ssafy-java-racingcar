@@ -1,5 +1,7 @@
 package step4.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,14 +23,16 @@ public class Winner {
                 .getAsInt();
 
         List<RacingCar> winners = racingCars.stream()
-                .filter(car -> car.getPosition().getPosition() == max)
-                .collect(Collectors.toList());
+                .filter(car -> {
+                    Position position = car.getPosition();
+                    return position.getPosition() == max;
+                }).collect(Collectors.toList());
 
         return winners;
     }
 
     public List<RacingCar> getWinner(){
-        return this.winners;
+        return Collections.unmodifiableList(this.winners);
     }
 
     @Override
